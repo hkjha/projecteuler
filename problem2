@@ -1,0 +1,30 @@
+#simple Brute Force. Can memoize fibonacii values
+def fib(n):
+    if(n<=1): return 1;
+    else:
+        return fib(n-1)+fib(n-2)
+
+n=1;
+sum=0;
+while(fib(n)<4e6):
+    k=fib(n)
+    if(k%2==0): 
+        sum+=k
+        print(k)
+    n+=1
+print(sum)
+
+#better solution by building the list
+
+fibnumbers=[1] #store the first few known fibonacci numbers
+x=1
+i=0
+while x<4e6:
+    fibnumbers.append(x)
+    x=x+fibnumbers[i]
+    i=i+1
+sum=0
+for fib in fibnumbers:
+    if fib%2==0: 
+        sum+=fib
+print(sum)
